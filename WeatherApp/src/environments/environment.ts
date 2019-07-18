@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   appId: '0bfd9c8ec382ac598e201a033426f6ef',
-  baseUrl: 'http://api.openweathermap.org/data/2.5/weather'
+  weatherBaseUrl: 'http://api.openweathermap.org/data/2.5/weather',
+  imageBaseUrl: 'http://openweathermap.org/img/w'
 };
 
 /*

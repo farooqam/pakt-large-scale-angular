@@ -14,21 +14,21 @@ export class WeatherService {
 
   getLocalWeather(city: string, country: string): Observable<ILocalWeather> {
     return this.httpClient.get<ILocalWeatherData>(
-      `${environment.baseUrl}?q=${city},${country}&appid=${environment.appId}`
+      `${environment.weatherBaseUrl}?q=${city},${country}&appid=${environment.appId}`
       ).pipe(
         map(data => this.transform(data))
       );
   }
 
-  private transform(data: ILocalWeatherData) : ILocalWeather {
+  private transform(data: ILocalWeatherData): ILocalWeather {
     return {
       city: data.name,
       country: data.sys.country,
       date: new Date(data.dt * 1000),
-      image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
+      image: `${environment.imageBaseUrl}/${data.weather[0].icon}.png`,
       temperature: this.convertKelvinToFarenheit(data.main.temp),
       description: data.weather[0].description
-    }
+    };
   }
 
   private convertKelvinToFarenheit(kelvin: number): number {

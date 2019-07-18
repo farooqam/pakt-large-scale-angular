@@ -12,14 +12,6 @@ export class LocalWeatherComponent implements OnInit {
   localWeather: ILocalWeather;
 
   constructor(private weatherService: WeatherService) {
-    this.localWeather = {
-      city: 'Redmond',
-      country: 'US',
-      date: new Date(),
-      image: 'assets/img/sunny.png',
-      temperature: 72,
-      description: 'sunny'
-    } as ILocalWeather;
   }
 
   ngOnInit() {
