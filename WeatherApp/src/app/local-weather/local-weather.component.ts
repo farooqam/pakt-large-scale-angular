@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ILocalWeather } from '../ilocal-weather';
+import { WeatherService } from '../weather/weather.service';
 
 @Component({
   selector: 'app-local-weather',
@@ -9,7 +10,8 @@ import { ILocalWeather } from '../ilocal-weather';
 export class LocalWeatherComponent implements OnInit {
 
   localWeather: ILocalWeather;
-  constructor() {
+
+  constructor(private weatherService: WeatherService) {
     this.localWeather = {
       city: 'Redmond',
       country: 'US',
@@ -20,8 +22,9 @@ export class LocalWeatherComponent implements OnInit {
     } as ILocalWeather;
   }
 
-
   ngOnInit() {
+    this.weatherService.getLocalWeather('Seattle', 'US')
+      .subscribe((data) => this.localWeather = data);
   }
 
 }
