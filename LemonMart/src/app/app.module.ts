@@ -6,10 +6,6 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ManagerModule } from './manager/manager.module';
-import { InventoryModule } from './inventory/inventory.module';
-import { PosModule } from './pos/pos.module';
-import { UserModule } from './user/user.module';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 
@@ -24,11 +20,7 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
-    FlexLayoutModule,
-    ManagerModule,
-    InventoryModule,
-    PosModule,
-    UserModule
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
