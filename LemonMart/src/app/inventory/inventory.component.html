@@ -1,0 +1,10 @@
+<mat-toolbar color="accent" fxLayoutGap="8px">
+        <a mat-button routerLink="/inventory/home" routerLinkActive="active-link">Inventory Dashboard</a>
+        <a mat-button routerLink="/inventory/stock" routerLinkActive="active-link">Stock</a>
+        <a mat-button routerLink="/inventory/products" routerLinkActive="active-link">Products</a>
+        <a mat-button routerLink="/inventory/categories" routerLinkActive="active-link">Categories</a>
+        <span class="flex-spacer"></span>
+        <button mat-mini-fab routerLink="/manager" matTooltip="Manager's Dashboard" aria-label="Manager's Dashboard"><mat-icon>dashboard</mat-icon></button>
+        <button mat-mini-fab routerLink="/pos" matTooltip="POS" aria-label="POS"><mat-icon>shopping_cart</mat-icon></button>
+</mat-toolbar>
+<router-outlet></router-outlet>
