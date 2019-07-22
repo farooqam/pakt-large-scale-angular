@@ -1,1 +1,6 @@
-<p>pos works!</p>
+<mat-toolbar color="accent" fxLayoutGap="8px">
+        <span class="flex-spacer"></span>
+        <button mat-mini-fab routerLink="/manager" matTooltip="Manager's Dashboard" aria-label="Manager's Dashboard"><mat-icon>dashboard</mat-icon></button>
+        <button mat-mini-fab routerLink="/inventory" matTooltip="Inventory" aria-label="Inventory"><mat-icon>list</mat-icon></button>
+</mat-toolbar>
+<router-outlet></router-outlet>
