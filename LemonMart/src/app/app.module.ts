@@ -7,14 +7,18 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms'
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import { AuthService } from './auth/auth.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +26,10 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
