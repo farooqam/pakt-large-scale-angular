@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 import { Role } from './role.enum';
 import { IServerAuthResponse } from './iserver-auth-response';
 import { IAuthStatus } from './iauth-status';
+import { transformError } from '../common/common';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,32 @@ export class AuthService {
     password: string
   ) => Observable<IServerAuthResponse>;
 
+
   authStatus = new BehaviorSubject<IAuthStatus>(AuthService.defaultAuthStatus);
+
+  login(email: string, password: string): Observable<IAuthStatus> {
+    this.logout();
+
+    const loginResponse = this.authProvider(email, password)
+      .pipe(map(value => {
+        return decode(value.accessToken) as IAuthStatus;
+      }),
+      catchError(transformError));
+
+    loginResponse.subscribe(res => {
+      this.authStatus.next(res);
+    },
+    err => {
+      this.logout();
+      return observableThrowError(err);
+    });
+
+    return loginResponse;
+  }
+
+  logout() {
+    this.authStatus.next(AuthService.defaultAuthStatus);
+  }
 
   private fakeAuthProvider(email: string, password: string): Observable<IServerAuthResponse> {
       if (!email.toLowerCase().endsWith('@test.com')) {
